@@ -1,0 +1,17 @@
+﻿
+@{
+    ViewBag.Title = "GiaiThua";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>Giai thừa từ 1 - 10</h2>
+
+@{
+     int i = 1;
+    foreach (float item in @ViewBag.Result)
+    {
+        <h4>@i : @item</h4>
+        i++;
+    }
+}
+

@@ -1,0 +1,36 @@
+﻿
+@{
+    ViewBag.Title = "BangCuuChuong";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>BangCuuChuong</h2>
+@{ 
+    var message = "Bảng cửu chương: ";
+    int result;
+}
+
+    @{
+
+        for (int i = 2; i <= 9; i++)
+        {
+            <h4 class="ok">@message@i:</h4>;
+            for (int j = 1; j <= 10; j++)
+            {
+                result = i * j;
+                <li>@i x @j = @result</li>
+            }
+        }
+
+
+    }
+
+
+<style>
+    .ok {
+        display: flex;
+    }
+    li{
+        display: block;
+    }
+</style>

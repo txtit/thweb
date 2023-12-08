@@ -1,0 +1,98 @@
+﻿
+@{
+    ViewBag.Title = "Bai4_Register";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>Bai4_Register</h2>
+@{
+    Html.BeginForm("Bai4_ResultRegister", "HTMLHelper", FormMethod.Get);
+    <table class="table table-hover table-bordered ">
+        <tr>
+            <td  class="col"  colspan="2">THÔNG TIN VỀ ĐƠN VỊ TUYỂN</td>
+
+        </tr>
+        <tr>
+            <td>@Html.Label("Tên đơn vị tuyển(*)")</td>
+            <td>@Html.TextBox("txtDVT", null, new { style = "width: 100%;" })</td>
+        </tr>
+        <tr>
+            <td>@Html.Label("Loại hình doanh nghiệp(*)")</td>
+            <td>@Html.DropDownList("LoaiHinhDoanhNghiep", new SelectList(ViewBag.listDoanhNghiep, "ID", "Name"))</td>
+        </tr>
+        <tr>
+            <td>@Html.Label("Số lượng nhân viên(*)")</td>
+            <td>@Html.TextBox("txtSLNV")</td>
+        </tr>
+        <tr>
+            <td  class="col"  colspan="2">THÔNG TIN LIÊN HỆ</td>
+        </tr>
+        <tr>
+            <td>@Html.Label("Địa chỉ(*)")</td>
+            <td>@Html.TextArea("txtDC", null, new { style = "width: 100%;" })</td>
+        </tr>
+        <tr>
+            <td>@Html.Label("Người liên hệ(*)")</td>
+            <td>@Html.TextBox("txtNLH", null, new { style = "width: 100%;" })</td>
+        </tr>
+        <tr>
+            <td>@Html.Label("Số điện thoại(*)")</td>
+            <td>@Html.TextBox("txtSDT")</td>
+        </tr>
+        <tr>
+            <td>@Html.Label("số Fax(*)")</td>
+            <td>@Html.TextBox("txtSF")</td>
+        </tr>
+        <tr>
+            <td>@Html.Label("Email(*)")</td>
+            <td>@Html.TextBox("txtEmail", null, new { style = "width: 60%;" })</td>
+        </tr>
+        <tr>
+            <td>@Html.Label("Địa chỉ Website(*)")</td>
+            <td>@Html.TextBox("txtDCW", null, new { style = "width: 100%;" })</td>
+        </tr>
+        <tr>
+            <td class="col" colspan="2">THÔNG TIN ĐĂNG NHẬP</td>
+        </tr>
+        <tr>
+            <td>@Html.Label("Tên đăng nhập(*)")</td>
+            <td>@Html.TextBox("txtTDN", null, new { style = "width: 60%;" })</td>
+        </tr>
+        <tr>
+            <td>@Html.Label("Mật khẩu(*)")</td>
+            <td>@Html.Password("txtMK")</td>
+        </tr>
+        <tr>
+            <td>@Html.Label("Xác nhận mật khẩu(*)")</td>
+            <td>@Html.Password("txtXNMK")</td>
+        </tr>
+        <td colspan="2">THÔNG TIN ĐĂNG NHẬP</td>
+        <tr>
+            <td>@Html.Label("Nhận thư điện tử(*)")</td>
+            <td>@Html.CheckBox("Nhận") Nhận @Html.CheckBox("Không nhận")Không nhận</td>
+        </tr>
+
+
+
+
+
+    </table>
+    <div style="text-align: center" colspan="2"><input type="submit" value="Đăng ký" /></div>
+    Html.EndForm();
+}
+
+
+@{ 
+    <style>
+        .col {
+            text-align: center;
+            background-color: #1b7cc6;
+            color: aliceblue;
+            font-size :18px;
+            font-weight: 700;
+        }
+        .input,.textarea{
+            width :500px;
+        }
+    </style>
+        }

@@ -1,0 +1,66 @@
+﻿
+@{
+    ViewBag.Title = "ShowMusic";
+}
+
+<h2>Bảng Xếp Hạng Tháng 8 </h2>
+
+
+<ul>
+    @foreach(var music in Model)
+            {
+                <li>
+                    <div class="name">
+                        <a href="@Url.Action("DetailsMusic","Music",new {musicId = music.Id1})"> @music.Title1 </a>  
+                        <div class="action">
+                            <a href="@Url.Action("Download", "Music", new {musicId = music.Id1})">Tải về</a>
+                        </div>
+                    </div>
+                
+                </li>
+            }
+</ul>
+
+@*<ul>
+        <li>@Html.ActionLink("WREN EVANS - TỪNG QUEN | OFFICIAL AUDIO", "DetailsMusic")  @Html.ActionLink("Tải về", "Download")</li>
+        <li>@Html.ActionLink("BINZ - HIT ME UP | OFFCIAL AUDIO", "DetailsMusic")     @Html.ActionLink("Tải vể", "Dowload")</li>
+    </ul>*@
+
+<style>
+    /*CSS để kiểm soát bố cục*/
+    li {
+        text-decoration: none;
+        list-style: none;
+    }
+
+    ul {
+        padding: 0px;
+    }
+    /* CSS để tạo khoảng cách giữa các ActionLink */
+    .action-links {
+        margin-right: 10px;
+    }
+
+    .name {
+        display: flex;
+        justify-content: space-between;
+        width: 37%;
+    }
+
+    .action {
+        min-width: 40px;
+    }
+</style>
+
+
+
+@*<ul>
+    <li>
+        <div class="name">
+            @Html.ActionLink("WREN EVANS - TỪNG QUEN | OFFICIAL AUDIO", "DetailsMusic", null, new { @class = "action-links" })
+            <div class="action">@Html.ActionLink("Tải về", "Download")</div>
+        </div>
+    </li>
+
+
+</ul>*@

@@ -1,0 +1,66 @@
+﻿@model IEnumerable<taoGioHang.Models.CartItem>
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+    List<taoGioHang.Models.CartItem> ShoppingCart = Session["ShoppingCart"] as List<taoGioHang.Models.CartItem>;
+
+
+}
+@if (Model == null)
+{
+                <p class="text-info text-center" >Giỏ hàng của bạn rỗng!</p>
+}
+else
+{
+<table class="table">
+    <tr>
+        <th>@Html.DisplayNameFor(model => model.Name)</th>
+        <th>@Html.DisplayNameFor(model => model.Price)</th>
+        <th>@Html.DisplayNameFor(model => model.Photo)</th>
+        <th>@Html.DisplayNameFor(model => model.Amount)</th>
+        <th>@Html.DisplayNameFor(model => model.Money)</th>
+    </tr>
+    @foreach (var item in Model)
+    {
+        if (ShoppingCart == null || !ShoppingCart.Any())
+        {
+            @Url.Action("CardIsNull")
+            <p class="text-info text-center">Giỏ hàng của bạn rỗng2!</p>
+
+        }
+        else
+        {
+            <tr>
+                <td>@Html.DisplayFor(modelItem => item.Name)</td>
+                <td>@Html.DisplayFor(modelItem => item.Price)</td>
+                <td>
+                    <img src="~/Content/images/@item.Photo" width="170" height="160" />
+                </td>
+                <td>
+                    <form action="@Url.Action("UpdateAmount")" method="get">
+                        <input type="hidden" name="ProductId" value="@item.Id" />
+                        <input type="number" min="1" step="1" name="newAmount" value="@item.Amount" />
+                        <button type="submit" class="btn btn-primary btn-sm">Cập nhật</button>
+
+                    </form>
+                </td>
+                <td>@item.Price.ToString("#,##0").Replace(',', '.')VNĐ</td>
+                <td>
+                    <a href="@Url.Action("RemoveItem", new {ProductId = item.Id})"
+                       onclick="return confirm('Bạn có chắc muốn xóa sản phẩm này?');" class="btn btn-danger btn-sm">Xóa</a>
+                </td>
+
+            </tr>
+        }
+
+    }
+    <tr>
+        <td class="text-right">Tổng số lượng:</td>
+        <td>@Model.Sum(m => m.Amount)</td>
+        <td class="text-right">Tổng thành tiền:</td>
+        <td>@Model.Sum(m => m.Money).ToString("#,##0").Replace(',', '.')VNĐ</td>
+    </tr>
+</table>
+            }
+
+
